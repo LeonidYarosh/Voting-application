@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row } from 'reactstrap'
+import { Container, Col, Button } from 'reactstrap'
 import InputNumberParticipants from 'components/InputNumberParticipants'
 
 import './assets/styles/base.css'
@@ -22,15 +22,25 @@ class App extends Component {
 
     return (
       <Container className="base-container">
-        <Row>
-          {
-            amountParticipants ?
-              <VoteContainer amountParticipants={ amountParticipants }/>
-              :
-              <InputNumberParticipants onClick={ this.onEntryParticipants }/>
-          }
-
-        </Row>
+        <header>
+          <h2>Приложение для обработки результатов голосования</h2>
+        </header>
+        {
+          amountParticipants ?
+            <VoteContainer
+              amountParticipants={ amountParticipants }
+            />
+            :
+            <InputNumberParticipants onClick={ this.onEntryParticipants }/>
+        }
+        {
+          !!amountParticipants &&
+          <Col xs="12">
+            <Button color="primary" onClick={ () => this.onEntryParticipants(0) }>
+              Перезапустить
+            </Button>
+          </Col>
+        }
       </Container>
     )
   }

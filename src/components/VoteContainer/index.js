@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Col } from 'reactstrap'
 import LogVotes from 'components/VoteContainer/LogVotes'
+import TableParticipiants from 'components/VoteContainer/TableParticipiants'
+
+import './style.css'
 
 class VoteContainer extends Component {
 
@@ -60,9 +64,13 @@ class VoteContainer extends Component {
     const { voterData, seconds, initialState } = this.state
 
     return (
-      <div>
-        <LogVotes voterData={ voterData } seconds={ seconds } initialState={ initialState } />
-        { /* <TableParticipiants />*/ }
+      <div className="vote-container">
+        <Col sm="12" md="4">
+          <LogVotes voterData={ voterData } seconds={ seconds } initialState={ initialState } />
+        </Col>
+        <Col sm="12" md="8">
+          <TableParticipiants voterData={ voterData } seconds={ seconds } />
+        </Col>
       </div>
     )
   }

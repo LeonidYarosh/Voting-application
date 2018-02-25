@@ -26,6 +26,7 @@ class LogVotes extends Component {
 
       data.map((el, i) => {
         stringConfig = `${stringConfig}${i + 1}к. - ${ el } гл.\n`
+        return true
       })
 
       this.setState({
@@ -40,14 +41,18 @@ class LogVotes extends Component {
 
     return (
       <Form>
-        <FormGroup row>
-          <Label for="config" >Конфиг результатов голосования (к. - кандидат, гл. - голоса).         Время: { 9 - seconds }</Label>
+        <FormGroup>
+          <div> Время: { 9 - seconds }</div>
+          <Label for="config" >
+            Конфиг результатов голосования <br/>
+            (к. - кандидат, гл. - голоса).
+          </Label>
           <Input
             type="textarea"
             name="text"
             id="config"
             value={ voteConfigList }
-            rows="6"
+            rows="8"
             onChange={ () => {} }
           />
         </FormGroup>
